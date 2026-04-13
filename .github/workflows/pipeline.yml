@@ -39,10 +39,9 @@ jobs:
         docker build -t us-central1-docker.pkg.dev/${{ secrets.GCP_PROJECT_ID }}/microservices-repo/result-app:latest ./result
         docker push us-central1-docker.pkg.dev/${{ secrets.GCP_PROJECT_ID }}/microservices-repo/result-app:latest
 
-    - name: Deploy Vote App to Cloud Run
+    - name: Deploy Vote App
       run: |
         gcloud run deploy vote-app \
           --image us-central1-docker.pkg.dev/${{ secrets.GCP_PROJECT_ID }}/microservices-repo/vote-app:latest \
-          --platform managed \
-          --region us-central1 \
-          --allow-unauthenticated
+          --set-secrets="DB_PASSWORD=DB_CONNECTION_STRING:latest" \
+          --region us-central1 (Iowa)
