@@ -44,4 +44,4 @@ jobs:
         gcloud run deploy vote-app \
           --image us-central1-docker.pkg.dev/${{ secrets.GCP_PROJECT_ID }}/microservices-repo/vote-app:latest \
           --set-secrets="DB_PASSWORD=DB_CONNECTION_STRING:latest" \
-          --region us-central1 (Iowa)
+          --region us-central1
